@@ -16,7 +16,7 @@ const init = () => {
                 const urlParams = new URLSearchParams(window.location.search);
                 let userId = urlParams.get('id');
                 const a = document.createElement("a");
-                a.href = `index.html?id=${user.id}`;
+                a.href = "index.html?id=repos-list";
                 a.innerText = user.login;
                 li.appendChild(a);
                 ul.appendChild(li);
@@ -26,8 +26,7 @@ const init = () => {
 
     // Obtain list from GitHub API  
     const getReposList = () => {
-        const url = 'https://api.github.com/users/repos';
-        fetch(url)
+        fetch("https://api.github.com/users/mojombo/repos")
             .then(response => response.json())
             .then(repos => displayReposList(repos))
 
