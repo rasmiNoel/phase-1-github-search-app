@@ -55,10 +55,14 @@ const init = () => {
         // Display search results
         const displaySearch = (users) => {
             const ul = document.querySelector('#user-list');
+
             ul.innerHTML = '';
             users.items.forEach(user => {
                 const li = document.createElement('li');
-                li.textContent = user.login;
+                const a = document.createElement("a");
+                a.href = "index.html?id=repos-list";
+                a.innerText = user.login;
+                li.appendChild(a);
                 ul.appendChild(li);
             });
         }
