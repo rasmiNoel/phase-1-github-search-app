@@ -2,8 +2,7 @@ const init = () => {
 
     // Obtain list from GitHub API
     const getUserList = () => {
-        const url = 'https://api.github.com/users';
-        fetch(url)
+        fetch('https://api.github.com/users')
             .then(response => response.json())
             .then(users => displayUserList(users))
 
@@ -13,8 +12,6 @@ const init = () => {
 
             users.forEach(user => {
                 const li = document.createElement('li');
-                const urlParams = new URLSearchParams(window.location.search);
-                let userId = urlParams.get('id');
                 const a = document.createElement("a");
                 a.href = "index.html?id=repos-list";
                 a.innerText = user.login;
@@ -50,8 +47,8 @@ const init = () => {
         event.preventDefault();
         const input = document.querySelector('#search');
         const search = input.value;
-        const url = `https://api.github.com/search/users?q=${search}`;
-        fetch(url)
+
+        fetch(`https://api.github.com/search/users?q=${search}`)
             .then(response => response.json())
             .then(users => displaySearch(users))
 
